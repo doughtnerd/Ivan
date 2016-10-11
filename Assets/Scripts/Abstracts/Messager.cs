@@ -10,7 +10,7 @@ namespace Arena
 
     public enum GameMessage
     {
-        NEW_GAME, START_GAME, END_GAME, PAUSE_GAME, SAVE_GAME, LOAD_GAME
+        NEW_GAME, START_GAME, END_GAME, PAUSE_GAME, SAVE_GAME, LOAD_GAME, STOP_GAME
     }
 
     public enum ActionMessage
