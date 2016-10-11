@@ -62,7 +62,7 @@ namespace Arena
         /// </summary>
         private void Move()
         {
-            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
             //app.NotifyAnim(AnimationMessage.WALK, gameObject, moveDirection);
         }
 
