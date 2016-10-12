@@ -66,7 +66,6 @@ namespace Arena{
                         obj.transform.position = (obj.transform.position - transform.position).normalized * knockbackDistance + transform.position;
                     }
                     base.OnOverlap(coll);
-                    Debug.Log("entered");
                 }
                 nextSlashTime = Time.time + slashRate;
             }

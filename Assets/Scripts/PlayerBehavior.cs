@@ -58,14 +58,14 @@ namespace Arena
                 shield = !shield;
                 app.NotifyAction(ActionMessage.SHIELD, gameObject, shield);
             }
+            */
             if (Input.GetButtonDown("Pause"))
             {
                 paused = !paused;
                 app.NotifyGame(GameMessage.PAUSE_GAME, gameObject, paused);
             }
-            */
         }
-        
+
         /// <summary>
         /// Tells the game manager to disable the players shield and resets the toggle boolean.
         /// </summary>
