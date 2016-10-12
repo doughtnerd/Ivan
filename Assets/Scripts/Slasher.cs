@@ -63,7 +63,7 @@ namespace Arena{
                     GameObject obj = coll.gameObject;
                     if (knockbackOnHit)
                     {
-                        obj.transform.position = (obj.transform.position - transform.position).normalized * knockbackDistance + transform.position;
+                       obj.transform.position = ((obj.transform.position - transform.position).normalized * knockbackDistance + transform.position);
                     }
                     base.OnOverlap(coll);
                 }

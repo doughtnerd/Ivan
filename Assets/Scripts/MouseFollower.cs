@@ -5,9 +5,6 @@ namespace Arena
 {
     public class MouseFollower : MonoBehaviour
     {
-        public Quaternion rotation { get; set; }
-
-        // Update is called once per frame
         void Update()
         {
             Vector3 temp = Input.mousePosition;
@@ -17,8 +14,7 @@ namespace Arena
         public void SetDirection(Vector3 location)
         {
             float angleRad = Mathf.Atan2(location.y - transform.position.y, location.x - transform.position.x);
-            float angleDeg = (180 / Mathf.PI) * angleRad;
-            rotation = Quaternion.Euler(0, 0, angleDeg);
+            float angleDeg = (180 / Mathf.PI) * (angleRad - Mathf.PI/2);
             this.transform.rotation = Quaternion.Euler(0, 0, angleDeg);
         }
     }

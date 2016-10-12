@@ -20,6 +20,11 @@ namespace Arena
 
     public enum ChangeMessage
     {
-        DAMAGE
+        DAMAGE, MOVE_SPEED
+    }
+
+    public enum AnimationMessage
+    {
+        WALK
     }
 }

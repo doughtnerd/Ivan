@@ -55,6 +55,7 @@ namespace Arena
         public void SetMoveDirection(Vector3 moveDirection)
         {
             this.moveDirection = moveDirection;
+
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace Arena
         private void Move()
         {
             transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
-            //app.NotifyAnim(AnimationMessage.WALK, gameObject, moveDirection);
+            app.NotifyAnimation(AnimationMessage.WALK, gameObject, moveDirection.magnitude);
         }
 
         /// <summary>

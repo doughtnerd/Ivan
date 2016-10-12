@@ -13,6 +13,24 @@ namespace Arena
                 case ChangeMessage.DAMAGE:
                     HandleDamage(obj, (int) opData[0]);
                     break;
+                case ChangeMessage.MOVE_SPEED:
+                    HandleMoveSpeed(obj, (bool)opData[0], (float)opData[1]);
+                    break;
+            }
+        }
+
+        void HandleMoveSpeed(GameObject obj, bool reset, float speed)
+        {
+            MovingCharacter move = obj.GetComponent<MovingCharacter>();
+            if (move)
+            {
+                if (reset)
+                {
+                    move.ResetSpeed();
+                } else
+                {
+                    move.SetMoveSpeed(speed);
+                }
             }
         }
 
