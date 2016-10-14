@@ -24,7 +24,7 @@ namespace Arena
         /// How far away something can be and still be damaged.
         /// </summary>
         [SerializeField]
-        protected float detectionRange = 1;
+        protected float collisionRange = 1;
 
         /// <summary>
         /// 
@@ -54,7 +54,7 @@ namespace Arena
 
         protected virtual void Update()
         {
-            Collider2D coll = Physics2D.OverlapCircle(transform.position, detectionRange, damageableLayer);
+            Collider2D coll = Physics2D.OverlapCircle(transform.position, collisionRange, damageableLayer);
             if (coll)
             {
                 OnOverlap(coll);

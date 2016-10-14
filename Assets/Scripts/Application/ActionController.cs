@@ -67,7 +67,7 @@ namespace Arena
             MovingCharacter move = obj.GetComponent<MovingCharacter>();
             if (move)
             {
-                move.SetMoveDirection(direction);
+                move.Move(direction);
             } else
             {
                 Debug.Log(obj.name + " is trying to move but doesn't have a MovingCharacter componenet");

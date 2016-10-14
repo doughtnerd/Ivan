@@ -53,17 +53,17 @@ namespace Arena{
         /// <param name="layer">Target layer of objects that can be attacked.</param>
         public void Slash(Vector3 direction)
         {
-            if(Time.time > nextSlashTime)
+            if (Time.time > nextSlashTime)
             {
                 //app.NotifyAnim(AnimationMessage.SLASH, gameObject);
-                RaycastHit2D[] arr = Physics2D.BoxCastAll(gameObject.transform.position, hitBoxSize, 0f, direction, detectionRange, damageableLayer);
+                RaycastHit2D[] arr = Physics2D.BoxCastAll(gameObject.transform.position, hitBoxSize, 0f, direction, collisionRange, damageableLayer);
                 for (int i = 0; i < arr.Length; i++)
                 {
                     Collider2D coll = arr[i].collider;
                     GameObject obj = coll.gameObject;
                     if (knockbackOnHit)
                     {
-                       obj.transform.position = ((obj.transform.position - transform.position).normalized * knockbackDistance + transform.position);
+                        KnockBack(obj);
                     }
                     base.OnOverlap(coll);
                 }
@@ -73,6 +73,19 @@ namespace Arena{
 
         protected override void Update()
         {
+        }
+
+        void KnockBack(GameObject obj)
+        {
+            Vector3 knockDirection = (obj.transform.position - transform.position).normalized;
+            Vector3 newPosition = knockDirection * knockbackDistance + transform.position;
+            RaycastHit2D hit = Physics2D.Raycast(obj.transform.position, knockDirection, Vector3.Distance(obj.transform.position, newPosition), LayerMask.GetMask("Wall"));
+            if (hit)
+            {
+                Vector3 wallPos = hit.point;
+                newPosition = wallPos + ((knockDirection * -1) * .5f);
+            }
+            obj.transform.position = newPosition;
         }
     }
 }

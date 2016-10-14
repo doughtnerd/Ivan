@@ -14,7 +14,7 @@ namespace Arena
         /// <summary>
         /// The direction the object is currently moving in.
         /// </summary>
-        private Vector3 moveDirection;
+        //private Vector3 moveDirection;
 
         /// <summary>
         /// How quickly the object moves.
@@ -47,6 +47,7 @@ namespace Arena
         /// Gets the object's movement direction.
         /// </summary>
         /// <returns>The current move direction of the object.</returns>
+        /*
         public Vector3 GetMoveDirection()
         {
             return this.moveDirection;
@@ -55,16 +56,25 @@ namespace Arena
         public void SetMoveDirection(Vector3 moveDirection)
         {
             this.moveDirection = moveDirection;
-
         }
-
+        */
         /// <summary>
         /// Method describing the movement behavior of this object.
         /// </summary>
-        private void Move()
+        public virtual void Move(Vector3 moveDirection)
         {
-            transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
-            app.NotifyAnimation(AnimationMessage.WALK, gameObject, moveDirection.magnitude);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, raycastDistance, collisionLayer);
+            if (!hit)
+            {
+                transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
+                app.NotifyAnimation(AnimationMessage.WALK, gameObject, moveDirection.magnitude);
+            }
+            else
+            {
+                Vector2 hitVector = gameObject.transform.position;
+                Vector2 direction = hitVector.normalized * -1;
+                gameObject.transform.position = direction * knockbackDistance + hitVector;
+            }
         }
 
         /// <summary>
@@ -100,20 +110,6 @@ namespace Arena
         public void ResetSpeed()
         {
             this.moveSpeed = initSpeed;
-        }
-
-        protected virtual void Update()
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDirection, raycastDistance, collisionLayer);
-            if (!hit)
-            {
-                Move();
-            } else
-            {
-                Vector2 hitVector = gameObject.transform.position;
-                Vector2 direction = hitVector.normalized * -1;
-                gameObject.transform.position = direction*knockbackDistance + hitVector;
-            }
         }
     }
 }

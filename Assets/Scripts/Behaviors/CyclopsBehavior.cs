@@ -43,7 +43,7 @@ namespace Arena
             }
             if (target != Vector3.zero)
             {
-                if(Vector3.Distance(target, transform.position) <= 2)
+                if(Vector3.Distance(target, transform.position) <2)
                 {
                     Attack();
                 } else
