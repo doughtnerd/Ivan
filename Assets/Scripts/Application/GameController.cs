@@ -50,7 +50,7 @@ namespace Arena
         void HandleNewGame()
         {
             playerData = new PlayerData();
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
         }
 
         void LoadLevel(int level)
