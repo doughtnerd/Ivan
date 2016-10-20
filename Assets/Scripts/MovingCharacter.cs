@@ -44,21 +44,6 @@ namespace Arena
         }
 
         /// <summary>
-        /// Gets the object's movement direction.
-        /// </summary>
-        /// <returns>The current move direction of the object.</returns>
-        /*
-        public Vector3 GetMoveDirection()
-        {
-            return this.moveDirection;
-        }
-
-        public void SetMoveDirection(Vector3 moveDirection)
-        {
-            this.moveDirection = moveDirection;
-        }
-        */
-        /// <summary>
         /// Method describing the movement behavior of this object.
         /// </summary>
         public virtual void Move(Vector3 moveDirection)

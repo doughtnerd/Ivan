@@ -10,7 +10,7 @@ namespace Arena
         /// </summary>
         protected bool behaviorEnabled = true;
 
-        protected virtual void Update()
+        private void Update()
         {
             if (behaviorEnabled)
             {

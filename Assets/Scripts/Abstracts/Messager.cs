@@ -15,12 +15,12 @@ namespace Arena
 
     public enum ActionMessage
     {
-        SHOOT, DIE, SLASH, SHIELD, MOVE
+        SHOOT, DIE, SLASH, MOVE
     }
 
     public enum ChangeMessage
     {
-        DAMAGE, MOVE_SPEED
+        DAMAGE
     }
 
     public enum AnimationMessage

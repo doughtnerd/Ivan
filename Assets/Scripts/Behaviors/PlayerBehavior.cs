@@ -14,11 +14,6 @@ namespace Arena
         /// </summary>
         private Vector3 shootDirection;
 
-        /// <summary>
-        /// Dummy variable to enable toggling of the shield.
-        /// </summary>
-        private bool shield = false;
-
         private bool paused = false;
 
         protected override void Behave()
@@ -45,20 +40,11 @@ namespace Arena
             if (Input.GetButton("Fire1"))
             {
                 app.NotifyAction(ActionMessage.SHOOT, gameObject, shootDirection);
-                DisableShield();
             }
             if (Input.GetButton("Fire2"))
             {
                 app.NotifyAction(ActionMessage.SLASH, gameObject, shootDirection);
-                DisableShield();
             }
-            /*
-            if (Input.GetButtonDown("Shield"))
-            {
-                shield = !shield;
-                app.NotifyAction(ActionMessage.SHIELD, gameObject, shield);
-            }
-            */
             if (Input.GetButtonDown("Pause"))
             {
                 paused = !paused;
@@ -66,19 +52,11 @@ namespace Arena
             }
         }
 
-        /// <summary>
-        /// Tells the game manager to disable the players shield and resets the toggle boolean.
-        /// </summary>
-        private void DisableShield()
-        {
-            app.NotifyAction(ActionMessage.SHIELD, gameObject, false);
-            shield = false;
-        }
-
         public void OnDeath()
         {
             this.SetBehaviorEnabled(false);
             Destroy(gameObject, 1.5f);
+            app.NotifyGame(GameMessage.NEW_GAME, null);
         }
     }
 }

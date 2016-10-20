@@ -16,12 +16,6 @@ namespace Arena
         private Shootable primaryAmmo;
 
         /// <summary>
-        /// The shootable object that this object should use for it's super shot ammo.
-        /// </summary>
-        [SerializeField]
-        private Shootable secondaryAmmo;
-
-        /// <summary>
         /// The current ammo type being used by this object.
         /// </summary>
         private Shootable currentAmmo;
@@ -33,12 +27,6 @@ namespace Arena
         private float fireRate = .5f;
 
         /// <summary>
-        /// The additional delay to add to the fire-rate in order to calculate secondary fire rate.
-        /// </summary>
-        [SerializeField]
-        private float secondaryDelay = .5f;
-        
-        /// <summary>
         /// The range this shooter has.
         /// </summary>
         [SerializeField]
@@ -49,20 +37,6 @@ namespace Arena
         /// </summary>
         [SerializeField]
         private int pattern = 0;
-
-        /// <summary>
-        /// Time between when the shoot animation starts and when the bullet is actually fired.
-        /// </summary>
-        [SerializeField]
-        private float primaryAnimationDelay = 0;
-
-        /// <summary>
-        /// Time between when the shoot animation starts and when the bullet is actually fired.
-        /// </summary>
-        [SerializeField]
-        private float secondaryAnimationDelay = 0;
-
-        private bool shootingEnabled = true;
 
         /// <summary>
         /// Time until next fire.
@@ -89,11 +63,6 @@ namespace Arena
             initFireRate = fireRate;
             initRange = range;
             initPattern = pattern;
-        }
-
-        public void SetPrimaryAnimationDelay(float time)
-        {
-            this.primaryAnimationDelay = time;
         }
 
         /// <summary>
@@ -129,57 +98,24 @@ namespace Arena
         {
             if (Time.time > nextFire)
             {
-                //app.NotifyAnim(AnimationMessage.SHOOT_PRIMARY, gameObject);
-                StartCoroutine(PrimaryDelay(primaryAnimationDelay, direction));
                 nextFire = Time.time + fireRate;
+                currentAmmo = primaryAmmo;
+                switch (pattern)
+                {
+                    case 0:
+                        ShootInPattern(0, direction);
+                        break;
+                    case 1:
+                        ShootInPattern(1, direction);
+                        break;
+                    case 2:
+                        ShootInPattern(2, direction);
+                        break;
+                    case 3:
+                        ShootInPattern(3, direction);
+                        break;
+                }
             }
-        }
-
-        IEnumerator PrimaryDelay(float time, Vector3 direction)
-        {
-            yield return new WaitForSeconds(time);
-            currentAmmo = primaryAmmo;
-            switch (pattern)
-            {
-                case 0:
-                    ShootInPattern(0, direction);
-                    break;
-                case 1:
-                    ShootInPattern(1, direction);
-                    break;
-                case 2:
-                    ShootInPattern(2, direction);
-                    break;
-                case 3:
-                    ShootInPattern(3, direction);
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Shoots secondary ammo in the spcified direction using this object's shooting pattern.
-        /// </summary>
-        /// <param name="direction">The direction to shoot in.</param>
-        /// <returns>True if the shot was successful, false otherwise.</returns>
-        public bool SecondaryShoot(Vector3 direction)
-        {
-            if(Time.time > nextFire + secondaryDelay)
-            {
-                //app.NotifyAnim(AnimationMessage.SHOOT_SECONDARY, gameObject);
-                StartCoroutine(SecondaryDelay(secondaryAnimationDelay, direction));
-                nextFire = Time.time + fireRate;
-                return true;
-            } else
-            {
-                return false;
-            }
-        }
-
-        IEnumerator SecondaryDelay(float time, Vector3 direction)
-        {
-            yield return new WaitForSeconds(time);
-            currentAmmo = secondaryAmmo;
-            ShootInPattern(0, direction);
         }
 
         /// <summary>
@@ -191,7 +127,7 @@ namespace Arena
         {
             Vector3[] directions = GetVectorSet(pattern, direction);
             FireInDirections(directions);
-            
+
         }
 
         /// <summary>
@@ -206,7 +142,7 @@ namespace Arena
             switch (set)
             {
                 case 1:
-                    return new Vector3[]{ dir, dir * -1 };
+                    return new Vector3[] { dir, dir * -1 };
                 case 2:
                     return new Vector3[] { dir, dir * -1, new Vector3(-dir.y, dir.x, 0f), new Vector3(dir.y, -dir.x, 0f) };
                 case 3:
@@ -226,7 +162,7 @@ namespace Arena
             direction = direction == Vector3.zero ? Vector3.down : direction.normalized;
             return direction;
         }
-        
+
         /// <summary>
         /// For every direction in the array, fires a shootable object in that direction.
         /// </summary>
@@ -238,7 +174,7 @@ namespace Arena
                 Shootable temp = Instantiate(currentAmmo, gameObject.transform.position, new Quaternion(0, 0, 0, 0)) as Shootable;
                 temp.transform.position = transform.position;
                 temp.SetRange(range);
-                temp.SetDirection(directions[i]);
+                temp.SetDirection(directions[i].normalized, true);
             }
         }
 

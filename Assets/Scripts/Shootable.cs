@@ -12,40 +12,47 @@ namespace Arena
         /// How quickly this object travels.
         /// </summary>
         [SerializeField]
-        private float speed = 1f;
+        protected float speed = 1f;
 
         /// <summary>
         /// The range of this object. 
         /// After this object travels the specified range, this object will destroy itself.
         /// </summary>
-        private float range;
+        protected float range;
 
         /// <summary>
         /// The direction this object should travel in.
         /// </summary>
-        private Vector3 direction;
+        protected Vector3 direction;
 
         /// <summary>
         /// This objects origin location.
         /// </summary>
-        private Vector3 origin;
+        protected Vector3 origin;
 
         /// <summary>
         /// This objects velocity.
         /// </summary>
-        private Vector3 vel;
+        protected Vector3 vel;
 
         /// <summary>
         /// Sets this objects direction. 
         /// </summary>
         /// <param name="direction">The new direction value for this object.</param>
-        public void SetDirection(Vector3 direction)
+        public virtual void SetDirection(Vector3 direction, bool setFacingDirection)
         {
             this.direction = direction;
+            if (setFacingDirection)
+            {
+                SetFacingDirection(direction);
+            }
+        }
+
+        public virtual void SetFacingDirection(Vector3 direction)
+        {
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
-
         /// <summary>
         /// Sets the bullet's travel speed.
         /// </summary>
@@ -73,7 +80,7 @@ namespace Arena
         protected override void OnOverlap(Collider2D coll)
         {
             base.OnOverlap(coll);
-            Destroy(gameObject);
+            Expire();
         }
 
         void FixedUpdate()
@@ -82,8 +89,13 @@ namespace Arena
             transform.position = transform.position + vel;
             if (distance >= range)
             {
-                Destroy(gameObject);
+                Expire();
             }
+        }
+
+        protected virtual void Expire()
+        {
+            Destroy(gameObject);
         }
     }
 }

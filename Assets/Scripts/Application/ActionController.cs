@@ -39,10 +39,6 @@ namespace Arena
 
         void HandleDeath(GameObject obj)
         {
-            if (obj.tag.Equals("Player"))
-            {
-                app.NotifyGame(GameMessage.NEW_GAME, null);
-            }
             IOnDeathBehavior death = obj.GetComponent<IOnDeathBehavior>();
             if (death!=null)
             {

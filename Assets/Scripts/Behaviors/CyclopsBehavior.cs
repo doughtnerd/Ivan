@@ -28,7 +28,7 @@ namespace Arena
             app.NotifyAction(ActionMessage.SLASH, gameObject, direction);
         }
 
-        protected override void Update()
+        protected override void Behave()
         {
             Collider2D player = Physics2D.OverlapCircle(transform.position, detectionRadius, detectionLayer);
             if (player)
@@ -43,10 +43,11 @@ namespace Arena
             }
             if (target != Vector3.zero)
             {
-                if(Vector3.Distance(target, transform.position) <2)
+                if (Vector3.Distance(target, transform.position) < 2)
                 {
                     Attack();
-                } else
+                }
+                else
                 {
                     Move();
                 }
