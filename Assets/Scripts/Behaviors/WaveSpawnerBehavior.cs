@@ -73,6 +73,15 @@ namespace Arena
         }
 
         /// <summary>
+        /// Returns the current wave of this behavior object.
+        /// </summary>
+        /// <returns></returns>
+        public int GetCurrentWave()
+        {
+            return this.currentWaveNumber;
+        }
+
+        /// <summary>
         /// Based on the round number, calculates the amount of SpawnControls that will be needed upon level start and how much to increment each.
         /// </summary>
         /// <param name="roundNumber"></param>
@@ -131,7 +140,7 @@ namespace Arena
         /// <summary>
         /// Increments currentWaveNumber and triggers a wave.
         /// </summary>
-        void TriggerNextWave()
+        public void TriggerNextWave()
         {
             TriggerWave(currentWaveNumber + 1);
         }
@@ -139,7 +148,7 @@ namespace Arena
         /// <summary>
         /// Triggers a wave, calculates SpawnControls and if the wave is a boss round, then either spawns the wave or the boss.
         /// </summary>
-        void TriggerWave(int waveNumber)
+        public void TriggerWave(int waveNumber)
         {
             if (waveNumber <= 0)
             {
