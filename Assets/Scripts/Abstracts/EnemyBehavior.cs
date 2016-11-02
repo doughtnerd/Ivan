@@ -7,7 +7,8 @@ namespace Arena
     /// <summary>
     /// Basic interface for constructing enemy behavior.
     /// </summary>
-    public abstract class EnemyBehavior : Behavior, IOnDeathBehavior {
+    public abstract class EnemyBehavior : Behavior, IOnDeathBehavior, IPoolable
+    {
 
         /// <summary>
         /// The target of this enemy.
@@ -60,6 +61,22 @@ namespace Arena
             Move();
             Attack();
             LookInDirection(target);
+        }
+
+        public void OnEnable()
+        {
+            this.SetBehaviorEnabled(true);
+        }
+
+        public void OnDisable()
+        {
+            app.NotifyChange(ChangeMessage.RESTORE_HEALTH, gameObject);
+        }
+
+        protected IEnumerator DisableAfterTime(float time)
+        {
+            yield return new WaitForSeconds(time);
+            gameObject.SetActive(false);
         }
     }
 }

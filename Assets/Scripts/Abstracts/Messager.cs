@@ -20,11 +20,16 @@ namespace Arena
 
     public enum ChangeMessage
     {
-        DAMAGE
+        DAMAGE, RESTORE_HEALTH
     }
 
     public enum AnimationMessage
     {
         TRIGGER, WALK
+    }
+
+    public enum UIMessage
+    {
+        SCORE, PAUSE_MENU, WAVE
     }
 }

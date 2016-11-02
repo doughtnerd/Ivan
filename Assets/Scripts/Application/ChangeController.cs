@@ -13,6 +13,21 @@ namespace Arena
                 case ChangeMessage.DAMAGE:
                     HandleDamage(obj, (int) opData[0]);
                     break;
+                case ChangeMessage.RESTORE_HEALTH:
+                    HandleRestoreHealth(obj);
+                    break;
+            }
+        }
+
+        void HandleRestoreHealth(GameObject obj)
+        {
+            Damageable dam = obj.GetComponent<Damageable>();
+            if (dam)
+            {
+                dam.SetHealth(dam.GetMaxHealth());
+            } else
+            {
+                Debug.Log(obj.name + " is trying to restore health but doesn't have a damageable component");
             }
         }
 

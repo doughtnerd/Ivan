@@ -13,6 +13,9 @@ namespace Arena
         private ChangeController changeController;
         [SerializeField]
         private AnimationController animationController;
+        [SerializeField]
+        private UIController uiController;
+
 
         private static ArenaApplication instance;
 
@@ -53,5 +56,9 @@ namespace Arena
             animationController.OnNotification(message, obj, opData);
         }
 
+        public void NotifyUI(UIMessage message, GameObject obj, params object[] opData)
+        {
+            uiController.OnNotification(message, obj, opData);
+        }
     }
 }

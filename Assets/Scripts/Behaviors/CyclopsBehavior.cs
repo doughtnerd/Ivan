@@ -20,7 +20,7 @@ namespace Arena
         public override void OnDeath()
         {
             this.SetBehaviorEnabled(false);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         protected override void Attack()
