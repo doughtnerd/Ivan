@@ -1,0 +1,269 @@
+fileFormatVersion: 2
+guid: f0bdbe1d158187648afae8be9eddd9b9
+timeCreated: 1478110793
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ivan_Walk_Cycle_0
+    21300002: Ivan_Walk_Cycle_1
+    21300004: Ivan_Walk_Cycle_2
+    21300006: Ivan_Walk_Cycle_3
+    21300008: Ivan_Walk_Cycle_4
+    21300010: Ivan_Walk_Cycle_5
+    21300012: Ivan_Walk_Cycle_6
+    21300014: Ivan_Walk_Cycle_7
+    21300016: Ivan_Walk_Cycle_8
+    21300018: Ivan_Walk_Cycle_9
+    21300020: Ivan_Walk_Cycle_10
+    21300022: Ivan_Walk_Cycle_11
+    21300024: Ivan_Walk_Cycle_12
+    21300026: Ivan_Walk_Cycle_13
+    21300028: Ivan_Walk_Cycle_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_0
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 1071
+        width: 238
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_1
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 1082
+        width: 245
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_2
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 1085
+        width: 243
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_3
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 1086
+        width: 243
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_4
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 877
+        width: 239
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_5
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 863
+        width: 239
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_6
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 869
+        width: 239
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_7
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 861
+        width: 243
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_8
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 648
+        width: 243
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_9
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 653
+        width: 240
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_10
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 654
+        width: 240
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_11
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 634
+        width: 239
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_12
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 436
+        width: 243
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_13
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 442
+        width: 242
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ivan_Walk_Cycle_14
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 440
+        width: 240
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
