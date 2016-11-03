@@ -136,11 +136,13 @@ namespace Arena
         /// </summary>
         private void TriggerSpawn()
         {
-            StartCoroutine(SpawnDelay(toSpawn.Dequeue()));
             if (toSpawn.Count == 0)
             {
                 CancelInvoke("TriggerSpawn");
-            } 
+            } else
+            {
+                StartCoroutine(SpawnDelay(toSpawn.Dequeue()));
+            }
         }
 
         /// <summary>
@@ -196,6 +198,8 @@ namespace Arena
         /// </summary>
         public void DisableAllSpawns()
         {
+            StopAllCoroutines();
+            CancelInvoke();
             foreach(int i in pooledObjects.Keys)
             {
                 List<GameObject> list = pooledObjects[i];

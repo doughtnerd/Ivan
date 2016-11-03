@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
-
 namespace Arena
 {
     /// <summary>
@@ -26,7 +25,7 @@ namespace Arena
         /// The maximum spawn amount that a spawn control can have.
         /// </summary>
         [SerializeField]
-        private int maxSpawnAmount = 3;
+        private int maxSpawnAmount;
 
         /// <summary>
         /// How often to have a boss round.
@@ -73,12 +72,12 @@ namespace Arena
         }
 
         /// <summary>
-        /// Returns the current wave of this behavior object.
+        /// Returns the current wave
         /// </summary>
         /// <returns></returns>
         public int GetCurrentWave()
         {
-            return this.currentWaveNumber;
+            return currentWaveNumber;
         }
 
         /// <summary>
@@ -100,7 +99,7 @@ namespace Arena
                 amount = (roundNumber / addControlEvery) + 1;
             }
             increment = roundNumber % addControlEvery;
-            
+            Debug.Log("Amount: " + amount + " increment: " + increment);
             for (int i = 0; i < amount; i++)
             {
                 int init = 0;
@@ -109,10 +108,12 @@ namespace Arena
                     init = i % maxEnemyTypes;
                 }
                 SpawnControl control = new SpawnControl(waveSpawners.Count, maxEnemyTypes, maxSpawnAmount, init);
-                for (int j = 0; j < increment; j++)
+                int j = 0;
+                do
                 {
                     control.Increment();
-                }
+                    j++;
+                } while (j <= increment);
                 list.AddLast(control);
             }
             return list;
@@ -161,7 +162,7 @@ namespace Arena
             currentWaveNumber = waveNumber;
             app.NotifyUI(UIMessage.WAVE, null, waveNumber);
 
-            if (bossEvery!=0 && waveNumber % bossEvery == 0)
+            if (bossEvery > 0 && waveNumber % bossEvery == 0)
             {
                 bossSpawner.Spawn(0, 1);
             }
@@ -191,6 +192,7 @@ namespace Arena
         /// </summary>
         void EnsureSpawnsDisabled()
         {
+            StopAllCoroutines();
             foreach (WaveSpawner s in waveSpawners)
             {
                 s.DisableAllSpawns();
@@ -260,10 +262,7 @@ namespace Arena
             {
                 count += waveSpawners[i].GetActiveCount();
             }
-            if (bossSpawner != null)
-            {
-                count += bossSpawner.GetActiveCount();
-            }
+            count += bossSpawner.GetActiveCount();
             return count == 0;
         }
 
