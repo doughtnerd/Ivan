@@ -180,7 +180,7 @@ namespace Arena
         /// <param name="obj"></param>
         void Spawn(GameObject obj)
         {
-            Vector3 newPos = new Vector3(transform.position.x, transform.position.y + 1, 0);
+            Vector3 newPos = new Vector3(transform.position.x, transform.position.y, 0);
             if (CheckOverlap(newPos) && CheckLineOfSight(newPos))
             {
                 obj.transform.position = newPos;
@@ -189,7 +189,7 @@ namespace Arena
             else
             {
                 Debug.Log(gameObject.name + " failed to spawn");
-                Spawn(obj);
+                //Spawn(obj);
             }
         }
 

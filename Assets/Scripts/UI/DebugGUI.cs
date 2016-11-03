@@ -29,7 +29,7 @@ namespace Arena
             GUI.Box(new Rect(Screen.width - 120, Screen.height - 160, 120, 160), "God Menu");
             if (GUI.Button(new Rect(Screen.width - 110, Screen.height - 70, 100, 20), "Health Restore"))
             {
-                //app.NotifyChange(ChangeMessage.RESTORE_HEALTH, GameObject.FindGameObjectWithTag("Player"));
+                app.NotifyChange(ChangeMessage.RESTORE_HEALTH, GameObject.FindGameObjectWithTag("Player"));
             }
         }
     }
