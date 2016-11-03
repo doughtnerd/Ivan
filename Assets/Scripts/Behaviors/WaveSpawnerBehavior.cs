@@ -98,7 +98,8 @@ namespace Arena
             {
                 amount = (roundNumber / addControlEvery) + 1;
             }
-            increment = roundNumber % addControlEvery;
+            increment = roundNumber;
+            //increment = roundNumber % addControlEvery==0 ? 1:roundNumber%addControlEvery;
             Debug.Log("Amount: " + amount + " increment: " + increment);
             for (int i = 0; i < amount; i++)
             {
@@ -108,12 +109,10 @@ namespace Arena
                     init = i % maxEnemyTypes;
                 }
                 SpawnControl control = new SpawnControl(waveSpawners.Count, maxEnemyTypes, maxSpawnAmount, init);
-                int j = 0;
-                do
+                for(int j = 0; j < increment; j++)
                 {
                     control.Increment();
-                    j++;
-                } while (j <= increment);
+                }
                 list.AddLast(control);
             }
             return list;
@@ -193,6 +192,7 @@ namespace Arena
         void EnsureSpawnsDisabled()
         {
             StopAllCoroutines();
+            nextCheck = Time.time + checkInterval;
             foreach (WaveSpawner s in waveSpawners)
             {
                 s.DisableAllSpawns();

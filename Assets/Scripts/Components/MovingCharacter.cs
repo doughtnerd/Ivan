@@ -54,12 +54,14 @@ namespace Arena
                 transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
                 app.NotifyAnimation(AnimationMessage.WALK, gameObject, moveDirection.magnitude);
             }
+            /*
             else
             {
                 Vector2 hitVector = gameObject.transform.position;
                 Vector2 direction = hitVector.normalized * -1;
                 gameObject.transform.position = direction * knockbackDistance + hitVector;
             }
+            */
         }
 
         /// <summary>

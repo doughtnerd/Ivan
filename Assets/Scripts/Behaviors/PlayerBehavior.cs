@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 namespace Arena
 {
@@ -47,8 +48,8 @@ namespace Arena
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                app.NotifyAction(ActionMessage.SHOOT, gameObject, shootDirection);
                 app.NotifyAnimation(AnimationMessage.TRIGGER, gameObject, "ranged");
+                StartCoroutine(TriggerShoot(.4f));
             }
             if (Input.GetButtonDown("Fire2"))
             {
@@ -60,6 +61,13 @@ namespace Arena
                 paused = !paused;
                 app.NotifyGame(GameMessage.PAUSE_GAME, gameObject, paused);
             }
+        }
+
+        IEnumerator TriggerShoot(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            app.NotifyAction(ActionMessage.SHOOT, gameObject, shootDirection);
+
         }
 
         public void OnDeath()
